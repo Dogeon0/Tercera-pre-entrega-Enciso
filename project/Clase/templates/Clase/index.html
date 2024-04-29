@@ -1,13 +1,44 @@
 {% extends 'core/base.html' %}
 
+{% block nav %}
+<a class="navbar-brand" href="#!">Salon</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'core:home' %}">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'Clase:home' %}">Clase</a></li>
+        </ul>
+    </div> 
+{% endblock nav %}
+
 {% block title %}
-    <h1>Comisiones</h1>
+    <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
+        <div class="text-center my-5">
+            <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
+            <h1 class="text-white fs-3 fw-bolder">Clase:</h1>
+        </div>
+    </header>
+    
 {% endblock title %}
 
 {% block content %}
-    {%for comision in comisiones%}
-        <p>{{comision.nombre}} | {{comision.curso}} | {{comision.profesor}}</p>
-        <p>{{comision.estudiante}}</p>
+<section class="py-5">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h1 class="display-6 py-5 "><a href="{% url 'Clase:agregarCurso' %}">Agregar Curso</a></h1>
+                {% for comision in comisiones %}
+                    <p class="py-0 ">Comision:  {{ comision.nombre }} <br>Curso:  {{ comision.curso }} <br>Profesor:  {{ comision.profesor }} <br>Estudiantes:  <br>
+                    {% for estudiante in comision.estudiante.all %}
+                        {{ estudiante.nombre }} <br>
+                    {% endfor %}
+                    </p>
+                    <p class="py-0 ">---------------------------------------------</p>
+                {% endfor %} 
+                                    
+            </div>
+        </div>
+    </div>
+</section> 
 
-    {%endfor%}
 {% endblock content %}

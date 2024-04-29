@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiProyecto
-        
-    </title>
-</head>
-<body>
-    {% block title %} 
-    {% endblock  %}
-    {% block content %} 
-    {% endblock content %}
-</body>
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Salon</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'core/css/styles.css'%}" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                {% block nav %}
+                {% endblock nav %}
+            </div>
+        </nav>
+        {% block title %}
+        <!-- Header - set the background image for the header in the line below-->
+        {% endblock title %}
+        <!-- Content section-->
+        {% block content %} 
+        {% endblock content %}
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src=""></script>
+    </body>
 </html>
+
