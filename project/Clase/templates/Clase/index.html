@@ -24,9 +24,15 @@
 {% block content %}
 <section class="py-5">
     <div class="container my-5">
+        <div class="row text-center ">
+                <p class=" col  fs-3 p-3"><a class=" link-offset-3 " href="{% url 'Clase:agregarCurso' %}">Agregar Curso </a></p>
+                <p class=" col  fs-3 p-3"><a class=" link-offset-3 " href="{% url 'Clase:agregarEstudiante' %}">Agregar Estudiante</a></p>
+                <p class=" col  fs-3 p-3"><a class=" link-offset-3 " href="{% url 'Clase:agregarProfesor' %}">Agregar Profesor</a></p>
+                <p class=" col  fs-3 p-3"><a class=" link-offset-3 " href="">Agregar Comision</a></p>
+        </div>
         <div class="row justify-content-center">
             <div class="col-lg-6 text-center">
-                <h1 class="display-6 py-5 "><a href="{% url 'Clase:agregarCurso' %}">Agregar Curso</a></h1>
+                
                 {% for comision in comisiones %}
                     <p class="py-0 ">Comision:  {{ comision.nombre }} <br>Curso:  {{ comision.curso }} <br>Profesor:  {{ comision.profesor }} <br>Estudiantes:  <br>
                     {% for estudiante in comision.estudiante.all %}
