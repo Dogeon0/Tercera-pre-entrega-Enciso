@@ -12,39 +12,54 @@
 {% endblock nav %}
 
 {% block title %}
-    <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
+    <header class="py-5 bg-black " >
         <div class="text-center my-5">
-            <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
-            <h1 class="text-white fs-3 fw-bolder">Clase:</h1>
+            <h1 class="text-white display-1  ">Clase:</h1>
         </div>
     </header>
     
 {% endblock title %}
 
 {% block content %}
-<section class="py-5">
+<section class="py-5 ">
     <div class="container my-5">
-        <div class="row text-center ">
-                <p class=" col  fs-3 p-3"><a class=" link-offset-3 " href="{% url 'Clase:agregarCurso' %}">Agregar Curso </a></p>
-                <p class=" col  fs-3 p-3"><a class=" link-offset-3 " href="{% url 'Clase:agregarEstudiante' %}">Agregar Estudiante</a></p>
-                <p class=" col  fs-3 p-3"><a class=" link-offset-3 " href="{% url 'Clase:agregarProfesor' %}">Agregar Profesor</a></p>
-                <p class=" col  fs-3 p-3"><a class=" link-offset-3 " href="">Agregar Comision</a></p>
+        <div class="row text-center">
+                <p class=" col  fs-3 p-3"><a class="link-dark link-offset-3 " href="{% url 'Clase:agregarCurso' %}">Agregar Curso </a></p>
+                <p class=" col  fs-3 p-3"><a class="link-dark link-offset-3 " href="{% url 'Clase:agregarEstudiante' %}">Agregar Estudiante</a></p>
+                <p class=" col  fs-3 p-3"><a class="link-dark link-offset-3 " href="{% url 'Clase:agregarProfesor' %}">Agregar Profesor</a></p>
+                <p class=" col  fs-3 p-3"><a class="link-dark link-offset-3 " href="{% url 'Clase:agregarComision' %}">Agregar Comision</a></p>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-6 text-center">
-                
-                {% for comision in comisiones %}
-                    <p class="py-0 ">Comision:  {{ comision.nombre }} <br>Curso:  {{ comision.curso }} <br>Profesor:  {{ comision.profesor }} <br>Estudiantes:  <br>
-                    {% for estudiante in comision.estudiante.all %}
-                        {{ estudiante.nombre }} <br>
-                    {% endfor %}
-                    </p>
-                    <p class="py-0 ">---------------------------------------------</p>
-                {% endfor %} 
-                                    
+                <form method="post">
+                    {% csrf_token %}
+                    <h1>Buscar por comision:</h2>
+                    {{ form.as_p }}
+                    <button type="submit">Buscar</button>
+                </form> 
+
+                {% if resultados %}
+                    <div>
+                        <h3>Resultado de la búsqueda:</h2>
+                        
+                        {% for comision in resultados %}
+                            <p>{{ comision.nombre }}</p>
+                            <p>{{ comision.curso }}</p>
+                            <p>{{ comision.profesor }}<br></p>
+                            <p class=" fs-4">Estudiantes: </p>
+                            <ul class="list-group ">
+                            {% for Estudiante in comision.estudiantes.all %}
+                            <li class="list-group-item ">{{ Estudiante.nombre }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endfor %}
+                        
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
 </section> 
 
 {% endblock content %}
+

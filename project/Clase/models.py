@@ -22,7 +22,7 @@ class Comision(models.Model):
     nombre = models.PositiveIntegerField(unique=True)
     curso = models.ForeignKey(Curso, on_delete=models.SET_NULL,null=True, blank=True)
     profesor = models.ForeignKey(Profesor, on_delete=models.SET_NULL,null=True, blank=True)
-    estudiante = models.ManyToManyField(Estudiante)
+    estudiantes = models.ManyToManyField(Estudiante)
     def __str__(self) -> str:
         return str(self.nombre)
     

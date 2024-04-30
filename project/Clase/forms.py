@@ -1,7 +1,5 @@
 from django import forms
 from . import models
-#class AgregarCursoForm(forms.Form):
-#    nombre = forms.CharField()
 
 class AgregarCursoForm(forms.ModelForm):
     class Meta:
@@ -16,4 +14,13 @@ class AgregarEstudianteForm(forms.ModelForm):
 class AgregarProfesorForm(forms.ModelForm):
     class Meta:
         model = models.Profesor
-        fields = "__all__"      
+        fields = "__all__"    
+
+class AgregarComisionForm(forms.ModelForm):
+    class Meta:
+        model = models.Comision
+        fields = "__all__"
+
+class busquedaForm(forms.Form):
+    query = forms.IntegerField(label='Nombre')
+    
