@@ -27,20 +27,13 @@ O si no funciona:
 python3 manage.py runserver
 ```
 Luego acceder al proyecto desde un navegador web:
-Por defecto: **127.0.0.1**
+Por defecto: 
+```
+127.0.0.1
+```
 
+### Comision:
+54135
 
-    Comision:
-
-    Alumno:
-
-##  Acerca del Proyecto:
-
-##  Aplicaciones:
-
-### Modelos:
-
-##  Mejoras futuras:
-
-## Problemas conocidos:
-
+### Alumno:
+Santiago Enciso
